@@ -1,0 +1,35 @@
+<br>
+<hr>
+<div class="row form-group">
+    <input class="col-md-4 form-control" type="file" accept=".xls,.xlsx" id="customFile" (change)="selectFile($event)"
+        multiple="false">
+    <button class="col-md-2 btn btn-primary" [disabled]="false" (click)="upload()">Importer les classes </button>
+</div>
+
+<br>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3>Liste des classes de l'établissement</h3>
+    </div>
+    <div class="panel-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Num</th>
+                    <th>Nom</th>
+                    <th>Serie</th>
+                    <th>Niveau</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let classe of listOfClasse | async; let i= index">
+                    <td>{{i+1}}</td>
+                    <td>{{classe.name}}</td>
+                    <td>{{classe.serie.name}}</td>
+                    <td>{{classe.level}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

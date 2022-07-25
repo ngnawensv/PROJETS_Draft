@@ -1,0 +1,37 @@
+<br>
+<hr>
+<div class="row form-group">
+    <input class="col-md-4 form-control" type="file" accept=".xls,.xlsx" id="customFile" (change)="selectFile($event)"
+        multiple="false">
+    <button class="col-md-3 btn btn-primary" [disabled]="false" (click)="upload()">Importer les inscriptions </button>
+</div>
+
+<br>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3>Liste des élèves de l'établissement</h3>
+    </div>
+    <div class="panel-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Num</th>
+                    <th>Matricule</th>
+                    <th>Nom et prénom (s)</th>
+                    <th>Classe</th>
+                    <th>Serie</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let inscription of listOfInscription | async; let i= index">
+                    <td>{{i+1}}</td>
+                    <td>{{inscription.student.matricule}}</td>
+                    <td>{{inscription.student.name}}</td>
+                    <td>{{inscription.classe.name}}</td>
+                    <td>{{inscription.classe.serie.name}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

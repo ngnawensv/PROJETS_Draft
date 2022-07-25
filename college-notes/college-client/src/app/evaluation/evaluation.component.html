@@ -1,0 +1,23 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3>Notes de {{enseignement.cours}} en classe de {{classe.name}}</h3>
+    </div>
+    <div class="panel-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Matricule</th>
+            <th>Nom (s) et prémon(s)</th>
+            <th>Note</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let evaluation of listOfEvaluation | async; let i= index" (click)="selectEvaluation($event, evaluation,i)" [class.active]="i == selectedRow">
+            <td>{{evaluation.matricule}}</td>
+            <td>{{evaluation.student}}</td>
+            <td><input type="number"  value="{{evaluation.moy}}" [ngModel]="evaluation.moy"  (ngModelChange)="onNoteChange($event)"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

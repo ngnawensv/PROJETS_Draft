@@ -1,0 +1,22 @@
+td {
+    position: relative;
+}
+
+input[type="number"] {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    resize: none;
+
+    /* for full width without spacing */
+    width: 100%;
+    padding: 1rem;
+    border: none;
+}
+
+.table tr.active td {  
+    background-color:#1976d2!important;  
+    color: white;  
+  } 

@@ -1,0 +1,37 @@
+<br>
+<hr>
+<div>
+    <div class="progress">
+        <div class="progress-bar" role="progressbar" attr.aria-valuenow="{{loaded}}" aria-valuemin="0"
+            aria-valuemax="100" [ngStyle]="{width: loaded + '%'}">
+            {{loaded}}%
+        </div>
+    </div>
+    <input type="file" id="customFile" (change)="selectFile($event)" multiple="false">
+    <button class="btn btn-primary" [disabled]="false" (click)="upload()">Importer Les series </button>
+</div>
+
+<br>
+<br>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3>Liste des séries de l'établissement</h3>
+    </div>
+    <div class="panel-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Num</th>
+                    <th>nom</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let serie of listOfSerie | async; let i= index">
+                    <td>{{i+1}}</td>
+                    <td>{{serie.name}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

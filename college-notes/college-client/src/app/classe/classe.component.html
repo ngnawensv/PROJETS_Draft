@@ -1,0 +1,41 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h2>Liste des classes</h2>
+  </div>
+  <div class="panel-body">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Num</th>
+          <th>Classe</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let classe of listOfClasse | async; let i=index">
+          <td>{{i+1}}</td>
+          <td>{{classe.name}}</td>
+          <td>
+            <div class="btn-group dropleft">
+              <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                <span class="caret"></span>
+                Note
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li *ngFor="let enseignement of classe.listOfEnseignement">
+                  <a routerLink="/evaluation" [state]="{classe:classe,enseignement:enseignement}">
+                    <span>{{enseignement.cours}}</span> &nbsp;
+                    <span>:</span> &nbsp;
+                    <span>{{enseignement.evalEffectif}}</span>
+                    <span>/</span>
+                    <span>{{enseignement.totalEffectif}}</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
